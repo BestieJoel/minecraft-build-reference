@@ -1,0 +1,31 @@
+.primary-grid {
+  display: grid;
+  grid-template-columns: 1fr 0fr;
+  grid-template-rows: 0fr 1fr;
+  grid-template-areas: "header nav" "content content";
+
+  > h1 {
+    grid-area: header;
+  }
+  > nav {
+    grid-area: nav;
+  }
+  main {
+    grid-area: content;
+    padding: $base-padding;
+  }
+}
+
+@include breakpoint(tablet) {
+  .primary-grid {
+    grid-template-columns: 0fr 1fr;
+    grid-template-rows: 0.1fr 2fr;
+    grid-template-areas: "header content" "nav content";
+
+    main {
+      border-left: $light-border;
+      height: calc(100vh - #{2 * $base-padding});
+      overflow-y: auto;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<article class="build">
+  <h2>{{@model.title}}</h2>
+
+  <div>
+    <span class="pill">Versions: {{@model.versions}}</span>
+    {{#each @model.editions as | edition |}}
+      <Pill>{{edition}}</Pill>
+    {{/each}}
+  </div>
+
+  <div>
+    <h3>Materials Needed</h3>
+    <ul>
+      {{#each @model.materials as | material |}}
+        <li>{{material.label}}: {{material.value}}</li>
+      {{/each}}
+    </ul>
+  </div>
+
+  {{#each @model.steps as | step |}}
+    {{#if (eq step.type 'heading')}}
+      <h3>{{step.text}}</h3>
+    {{else if (eq step.type 'paragraph')}}
+      <p>{{step.text}}</p>
+    {{else if (eq step.type 'image')}}
+      <figure>
+        <img src={{step.path}} alt="Build Image">
+        {{#if step.text}}
+          <figcaption>{{step.text}}</figcaption>
+        {{/if}}
+      </figure>
+    {{else if (eq step.type 'list')}}
+      {{#if step.ordered}}
+        <ol>
+          {{#each step.items as |item|}}
+            <li>{{item}}</li>
+          {{/each}}
+        </ol>
+      {{else}}
+        <ul>
+          {{#each step.items as |item|}}
+            <li>{{item}}</li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    {{/if}}
+  {{/each}}
+</article>

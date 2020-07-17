@@ -1,0 +1,8 @@
+<h2>{{titleize @model.category}} / {{titleize @model.subcategory}}</h2>
+<ul>
+  {{#each @model.builds as | build |}}
+    <li>
+      <LinkTo class="subcategory" @route="category.subcategory.build" @model={{build.slug}}>{{build.name}}</LinkTo>
+    </li>
+  {{/each}}
+</ul>

@@ -1,0 +1,37 @@
+{{#if this.isOpen}}
+  <div class="categorized-nav-backdrop" {{on "click" this.open}} />
+{{/if}}
+
+<nav class="categorized-nav {{if this.isOpen "open"}}">
+  <button {{on "click" this.open}}>
+    {{svg-jar "menu"}}
+  </button>
+
+  <ul>
+    <li class="header">Categories</li>
+    {{#each @model as | category |}}
+      <li>
+        <LinkTo
+          class="category"
+          @route="category"
+          @model={{category.value}}
+          {{on "click" this.open}}
+        >
+          {{category.label}}
+        </LinkTo>
+      </li>
+      {{#each category.subcategories as | subcategory |}}
+        <li>
+          <LinkTo
+            class="subcategory"
+            @route="category.subcategory"
+            @models={{array category.value subcategory.value}}
+            {{on "click" this.open}}
+          >
+            {{subcategory.label}}
+          </LinkTo>
+        </li>
+      {{/each}}
+    {{/each}}
+  </ul>
+</nav>

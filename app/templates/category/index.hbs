@@ -1,0 +1,8 @@
+<h2>{{titleize @model.category}}</h2>
+<ul>
+  {{#each @model.subcategories as | subcategory |}}
+    <li>
+      <LinkTo class="subcategory" @route="category.subcategory" @model={{subcategory}}>{{titleize subcategory}}</LinkTo>
+    </li>
+  {{/each}}
+</ul>

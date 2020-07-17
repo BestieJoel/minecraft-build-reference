@@ -1,0 +1,19 @@
+.build {
+  > * {
+    margin: 0 0 #{$line-height}rem 0;
+  }
+  h3 {
+    margin-bottom: 0;
+  }
+  figure {
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+    figcaption {
+      text-align: center;
+      color: $caption-color;
+    }
+  }
+}
