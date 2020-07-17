@@ -4,7 +4,9 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'minecraft-build-reference',
     environment,
-    rootURL: '/',
+    rootURL: environment === 'production'
+      ? '/minecraft-build-reference/'
+      : '/',
     locationType: 'hash',
     EmberENV: {
       FEATURES: {
