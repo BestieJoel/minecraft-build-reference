@@ -9,7 +9,13 @@ const ContentGenerator = require('./plugins/content-generator');
 
 module.exports = function(defaults) {
 
-  let app = new EmberApp(defaults, { });
+  let app = new EmberApp(defaults, {
+    fingerprint: {
+      enabled: true,
+      generateAssetMap: true,
+      fingerprintAssetMap: true
+    }
+  });
 
   return new MergeTrees([
     app.toTree(),

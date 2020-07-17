@@ -24,7 +24,7 @@
       <p>{{step.text}}</p>
     {{else if (eq step.type 'image')}}
       <figure>
-        <img src={{root-url step.path}} alt="Build Image">
+        <img src={{root-url (asset-map step.path)}} alt="Build Image">
         {{#if step.text}}
           <figcaption>{{step.text}}</figcaption>
         {{/if}}
