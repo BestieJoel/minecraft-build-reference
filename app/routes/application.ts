@@ -30,19 +30,39 @@ export default class ApplicationRoute extends Route {
   }
 
   generateNavSchema(builds: BuildModel[]): NavSchema {
+    let preferedCategoryOrder = [
+      'early-game',
+      'mid-game',
+      'late-game',
+      'mechanics'
+    ];
+
     let categories: string[] = builds.mapBy('category').uniq();
 
-    return categories.map((category: string) => ({
-      label: titleize([category]),
-      value: category,
-      subcategories: builds.filterBy('category', category).mapBy('subcategory').map((subcategory: string) => ({
-        label: titleize([subcategory]),
-        value: subcategory,
-        builds: builds.filterBy('category', category).filterBy('subcategory', subcategory).map(build => ({
-          label: build.name,
-          value: build.slug
-        }))
+    return categories
+      .map((category: string) => ({
+        label: titleize([category]),
+        value: category,
+        subcategories: builds
+          .filterBy('category', category)
+          .mapBy('subcategory')
+          .map((subcategory: string) => ({
+            label: titleize([subcategory]),
+            value: subcategory,
+            builds: builds
+              .filterBy('category', category)
+              .filterBy('subcategory', subcategory)
+              .map(build => ({
+                label: build.name,
+                value: build.slug
+              }))
+              .sortBy('value')
+          }))
+          .sortBy('value')
       }))
-    }));
+      .sort((a,b) => {
+        if (preferedCategoryOrder.indexOf(a.value) > preferedCategoryOrder.indexOf(b.value)) return 1;
+        else return -1;
+      });
   }
 }
