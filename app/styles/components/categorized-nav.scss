@@ -33,7 +33,9 @@
       &.header {
         padding: 0.5rem;
         font-weight: bold;
-        border-bottom: $light-border;
+      }
+      &.category {
+        border-top: $light-border;
       }
     }
   }
@@ -47,8 +49,12 @@
     padding: 0.5rem;
     text-decoration: none;
 
+    svg {
+      vertical-align: middle;
+    }
+
     &.subcategory {
-      padding-left: 1.5rem;
+      padding-left: 2.5rem;
     }
     &:hover,
     &.active {
@@ -63,7 +69,6 @@
   }
 
   .categorized-nav {
-    border-top: $light-border;
     button {
       display: none;
     }

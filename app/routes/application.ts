@@ -46,6 +46,7 @@ export default class ApplicationRoute extends Route {
         subcategories: builds
           .filterBy('category', category)
           .mapBy('subcategory')
+          .uniq()
           .map((subcategory: string) => ({
             label: titleize([subcategory]),
             value: subcategory,

@@ -10,28 +10,27 @@
   <ul>
     <li class="header">Categories</li>
     {{#each @model as | category |}}
-      <li>
-        <LinkTo
-          class="category"
-          @route="category"
-          @model={{category.value}}
-          {{on "click" this.open}}
-        >
-          {{category.label}}
-        </LinkTo>
-      </li>
-      {{#each category.subcategories as | subcategory |}}
-        <li>
-          <LinkTo
-            class="subcategory"
-            @route="category.subcategory"
-            @models={{array category.value subcategory.value}}
-            {{on "click" this.open}}
-          >
-            {{subcategory.label}}
-          </LinkTo>
+      {{#let (eq this.selectedCategory category) as | categorySelected |}}
+        <li class="category">
+          <a {{on "click" (fn this.selectCategory category)}}>
+            {{svg-jar (if categorySelected "expand_less" "expand_more")}} {{category.label}}
+          </a>
         </li>
-      {{/each}}
+        {{#if categorySelected}}
+          {{#each category.subcategories as | subcategory |}}
+            <li>
+              <LinkTo
+                class="subcategory"
+                @route="category.subcategory"
+                @models={{array category.value subcategory.value}}
+                {{on "click" this.open}}
+              >
+                {{subcategory.label}}
+              </LinkTo>
+            </li>
+          {{/each}}
+        {{/if}}
+      {{/let}}
     {{/each}}
   </ul>
 </nav>
