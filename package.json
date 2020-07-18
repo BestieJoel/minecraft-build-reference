@@ -63,7 +63,6 @@
     "ember-source": "~3.16.0",
     "ember-svg-jar": "^2.2.3",
     "ember-truth-helpers": "^2.1.0",
-    "ember-web-app": "^4.0.0",
     "eslint-plugin-ember": "^7.7.2",
     "eslint-plugin-node": "^11.0.0",
     "loader.js": "^4.7.0",
