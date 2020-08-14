@@ -1,0 +1,12 @@
+{
+  "assets": {
+    "assets/assetMap.json": "assets/assetMap-8d34fa5d62e9cedf1dbed87b0fdf26c3.json",
+    "assets/auto-import-fastboot.js": "assets/auto-import-fastboot-d41d8cd98f00b204e9800998ecf8427e.js",
+    "assets/content/early-game/automated-farms/carrot.png": "assets/content/early-game/automated-farms/carrot-79230043aa9729cefe50ef28c71d7d77.png",
+    "assets/minecraft-build-reference.css": "assets/minecraft-build-reference-abaefdf6892023d759101c8daffa6d72.css",
+    "assets/minecraft-build-reference.js": "assets/minecraft-build-reference-af0f1868e45ba9a23c37037d59d1d3ff.js",
+    "assets/vendor.css": "assets/vendor-d41d8cd98f00b204e9800998ecf8427e.css",
+    "assets/vendor.js": "assets/vendor-4624217abfb010b5292e1d964b9b137f.js"
+  },
+  "prepend": ""
+}
