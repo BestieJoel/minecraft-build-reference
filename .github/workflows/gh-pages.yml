@@ -3,7 +3,6 @@ name: github pages deploy
 on:
   push:
     branches:
-      - fix-ghactions
       - master
 
 jobs:
