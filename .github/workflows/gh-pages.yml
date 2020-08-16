@@ -1,4 +1,4 @@
-name: gh pages deploy
+name: github pages deploy
 
 on:
   push:
@@ -10,13 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git config user.name "GitHub Actions" && git config user.email "actions@users.noreply.github.com"
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12.x'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Deploy
-        run: npm run deploy
+      - run: npm install
+      - run: npm run build
+      - run: git checkout gh-pages
+      - run: find . -not -path './dist*' \
+        -not -path './.git*' \
+        -not -path './README*' \
+        -not -path './LICENSE*' \
+        -delete
+      - run: rm -rf dist/
+      - run: git add -A
+      - run: git commit -m 'Github Actions Deploy'
+      - run: git push origin gh-pages
