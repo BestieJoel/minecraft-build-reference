@@ -16,11 +16,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: git checkout gh-pages
-      - run: find . -not -path './dist*' \
-        -not -path './.git*' \
-        -not -path './README*' \
-        -not -path './LICENSE*' \
-        -delete
+      - run: find . -not -path './dist*' -not -path './.git*' -not -path './README*' -not -path './LICENSE*' -delete
       - run: rm -rf dist/
       - run: git add -A
       - run: git commit -m 'Github Actions Deploy'
