@@ -15,6 +15,7 @@ jobs:
           node-version: '12.x'
       - run: npm install
       - run: npm run build
+      - run: git status
       - run: git checkout gh-pages
       - run: find . -not -path './dist*' -not -path './.git*' -not -path './README*' -not -path './LICENSE*' -delete
       - run: rm -rf dist/
