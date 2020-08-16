@@ -15,7 +15,7 @@ jobs:
           node-version: '12.x'
       - run: npm install
       - run: npm run build
-      - run: git status
+      - run: git config user.name "GitHub Actions" && git config user.email "actions@users.noreply.github.com"
       - run: git fetch
       - run: git checkout gh-pages
       - run: find . -not -path './dist*' -not -path './.git*' -not -path './README*' -not -path './LICENSE*' -delete
